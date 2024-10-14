@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+    <form method="post" action="/user/add" onsubmit="return validatePassword()">
+        <label>Name:
+            <input type="text" class="form-control">
+        </label>
+        <br/>
+        <label>Email:
+            <input type="email" class="form-control">
+        </label>
+        <br/>
+        <label>Password:
+            <input type="password" id="password" class="form-control">
+        </label>
+        <br/>
+        <label>Confirm Password:
+            <input type="password" id="confirmPassword" class="form-control">
+        </label>
+        <br/>
+        <input type="submit" value="Register User" class="btn">
+    </form>
+    <p id="error-message" style="color:red;"></p>
+
+<script>
+    function validatePassword() {
+        const password = document.getElementById("password").value;
+        const confirmPassword = document.getElementById("confirmPassword").value;
+
+        if (password !== confirmPassword) {
+            document.getElementById("error-message").textContent = "Passwords do not match!";
+            return false;
+        }
+
+        return true;
+    }
+</script>
+
+</body>
+</html>
