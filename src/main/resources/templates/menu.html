@@ -24,6 +24,8 @@
             </tr>
         </table>
     </th:block>
+    <p th:if="${manipedi.equals('manicure')">Test <!--th:replace="fragments :: manicureDescription"--></p>
+    <p th:if='${manipedi.equals("pedicure")' th:replace="fragments :: pedicureDescription"></p>
 </div>
 </body>
 </html>
