@@ -34,8 +34,5 @@ public class UserController {
         return "user/index";
     }
 
-    @GetMapping("/serviceSelection")
-    public String displayServiceSelection() {
-        return "serviceSelection";
-    }
+
 }

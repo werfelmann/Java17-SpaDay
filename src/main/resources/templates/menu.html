@@ -3,57 +3,43 @@
 <head>
     <meta charset="UTF-8" />
     <title>Spa Menu</title>
-    <link href="../static/css/styles.css" th:href="@{/css/styles.css}" rel="stylesheet" />
+    <link href="/styles.css" th:href="@{/styles.css}" rel="stylesheet" />
 </head>
 <body>
 <h1>My Super Fancy Spa</h1>
-<div id = "clientProfile">
-<<<<<<< HEAD
+<div id="clientProfile">
+
     <h2>My profile</h2>
     <p th:text="${name}"></p>
     <p th:text="${skintype}"></p>
     <p th:text="${manipedi}"></p>
 </div>
-<div id = "servicesMenu">
+
+<div id="facialOptions">
+    <h2>Menu of Available Services</h2>
     <th:block >
         <table>
             <tr>
-                <th>Facial Options</th>
+                <th>Facial Treatments</th>
+            </tr>
+            <tr>
+                <td>The facial treatments below are recommended by our estheticians for your given skin type.</td>
             </tr>
             <tr th:each="facial : ${appropriateFacials}">
                 <td th:text="${facial}"></td>
             </tr>
         </table>
     </th:block>
-    <p th:if="${manipedi.equals('manicure')">Test <!--th:replace="fragments :: manicureDescription"--></p>
-    <p th:if='${manipedi.equals("pedicure")' th:replace="fragments :: pedicureDescription"></p>
-=======
-    <h2>My Profile</h2>
-    <p th:text = "${client.skinType}"></p>
-    <p th:text = "${client.nailService}"></p>
-</div>
-<div id = "servicesMenu">
-    <h2>Menu of Available Services</h2>
-    <div>
-        <h3>Facial Treatments</h3>
-        <p>The below facial treatments are recommended by our estheticians for your given skin type.</p>
-        <table>
-            <th:block th:each = "facial : ${client.appropriateFacials}">
-                <tr>
-                    <td th:text = "${facial}"></td>
-                </tr>
-            </th:block>
-        </table>
-    </div>
-    <div th:if = "${client.nailService == 'manicure'}">
+
+    <div th:if="${manipedi.equals('manicure')}">
         <h3>Manicure</h3>
-        <p th:replace =  "fragments :: manicureDescription"></p>
+        <p  th:replace="fragments :: manicureDescription"></p>
     </div>
-    <div th:if = "${client.nailService == 'pedicure'}">
+    <div th:if="${manipedi.equals('pedicure')}">
         <h3>Pedicure</h3>
-        <p th:replace = "fragments :: pedicureDescription"></p>
+        <p  th:replace="fragments :: pedicureDescription"></p>
     </div>
->>>>>>> user-signup-starter
+
 </div>
 </body>
 </html>

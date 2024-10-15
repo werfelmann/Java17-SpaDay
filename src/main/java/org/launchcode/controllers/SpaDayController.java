@@ -24,30 +24,12 @@ public class SpaDayController {
         }
     }
 
-    @GetMapping(value="")
-    @ResponseBody
+    @GetMapping("/customerForm")
     public String customerForm () {
-        String html = "<form method = 'post'>" +
-                "Name: <br>" +
-                "<input type = 'text' name = 'name'>" +
-                "<br>Skin type: <br>" +
-                "<select name = 'skintype'>" +
-                "<option value = 'oily'>Oily</option>" +
-                "<option value = 'combination'>Combination</option>" +
-                "<option value = 'normal'>Normal</option>" +
-                "<option value = 'dry'>Dry</option>" +
-                "</select><br>" +
-                "Manicure or Pedicure? <br>" +
-                "<select name = 'manipedi'>" +
-                "<option value = 'manicure'>Manicure</option>" +
-                "<option value = 'pedicure'>Pedicure</option>" +
-                "</select><br>" +
-                "<input type = 'submit' value = 'Submit'>" +
-                "</form>";
-        return html;
+        return "customerForm";
     }
 
-    @PostMapping(value="")
+    @PostMapping("/")
     public String spaMenu(@RequestParam String name, @RequestParam String skintype, @RequestParam String manipedi, Model model) {
 
         ArrayList<String> facials = new ArrayList<>();
@@ -63,6 +45,16 @@ public class SpaDayController {
             }
         }
 
+        model.addAttribute("name", name);
+        model.addAttribute("skintype", skintype);
+        model.addAttribute("manipedi", manipedi);
+        model.addAttribute("appropriateFacials", appropriateFacials);
+
         return "menu";
+    }
+
+    @GetMapping("/")
+    public String displayServiceSelection() {
+        return "serviceSelection";
     }
 }
